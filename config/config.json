@@ -1,0 +1,63 @@
+{
+  "system": {
+    "name": "Home-IO",
+    "version": "0.1.0",
+    "log_level": "INFO"
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 8000,
+    "debug": true,
+    "cors_origins": ["*"]
+  },
+  "database": {
+    "path": "data/home_io.db",
+    "backup_path": "data/backups",
+    "auto_backup": true,
+    "backup_interval_hours": 24
+  },
+  "plugins": {
+    "enabled": ["zwave", "tuya", "honeywell"],
+    "discovery": true,
+    "path": "plugins",
+    "config": {
+      "zwave": {
+        "controller_path": "/dev/ttyUSB0",
+        "mock_network": true
+      },
+      "tuya": {
+        "api_key": "",
+        "api_secret": "",
+        "data_center": "us",
+        "mock_mode": true,
+        "debug_mode": true
+      },
+      "honeywell": {
+        "client_id": "",
+        "client_secret": "",
+        "redirect_uri": "http://localhost:8000/api/callback/honeywell",
+        "mock_mode": true,
+        "debug_mode": true
+      }
+    }
+  },
+  "ui": {
+    "theme": "dark",
+    "title": "Home-IO Hub",
+    "refresh_interval": 5,
+    "tiles_per_row": 4,
+    "default_view": "dashboard"
+  },
+  "security": {
+    "enable_auth": false,
+    "pin_required": false,
+    "pin": "1234",
+    "session_timeout_minutes": 30,
+    "allowed_ips": ["127.0.0.1", "192.168.0.0/24"]
+  },
+  "notifications": {
+    "enabled": true,
+    "retention_days": 7,
+    "max_count": 100
+  }
+}

@@ -13,8 +13,10 @@ from core.config_manager import ConfigManager
 from core.db_manager import DatabaseManager
 from core.plugin_manager import PluginManager
 
-# Import API routes (will add more as we develop)
+# Import API routes
 from api.routes.devices import router as devices_router
+from api.routes.thermostats import router as thermostats_router
+from api.routes.smart_plugs import router as smart_plugs_router
 
 # Setup logging
 logging.basicConfig(
@@ -52,6 +54,8 @@ app.add_middleware(
 
 # Add API routes
 app.include_router(devices_router, prefix="/api/devices", tags=["devices"])
+app.include_router(thermostats_router, prefix="/api/thermostats", tags=["thermostats"])
+app.include_router(smart_plugs_router, prefix="/api/smart_plugs", tags=["smart_plugs"])
 
 # Health check endpoint
 @app.get("/api/health")
@@ -91,6 +95,19 @@ async def generic_exception_handler(request: Request, exc: Exception):
         status_code=500,
         content={"error": "Internal server error", "detail": str(exc)},
     )
+
+# OAuth callback endpoint for Honeywell authorization
+@app.get("/api/callback/honeywell")
+async def honeywell_callback(code: str = None, state: str = None):
+    """Callback endpoint for Honeywell OAuth authorization"""
+    if not code:
+        raise HTTPException(status_code=400, detail="Authorization code missing")
+    
+    # Store the authorization code in the config
+    config.set("plugins.config.honeywell.auth_code", code)
+    
+    # Return a success message
+    return {"message": "Authorization successful. You can close this window."}
 
 # Events
 @app.on_event("startup")

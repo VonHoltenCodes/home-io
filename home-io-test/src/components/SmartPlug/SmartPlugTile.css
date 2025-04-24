@@ -1,0 +1,76 @@
+.smart-plug-tile {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid #66bb6a;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.smart-plug-tile.on {
+  border-left-color: #ffeb3b;
+  box-shadow: 0 0 15px rgba(255, 235, 59, 0.3);
+}
+
+.smart-plug-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.smart-plug-icon {
+  font-size: 3rem;
+  margin: 10px 0;
+}
+
+.smart-plug-state {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.smart-plug-tile.on .smart-plug-state {
+  color: #ffeb3b;
+}
+
+.smart-plug-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.toggle-button {
+  background-color: #3d3d3d;
+  border: none;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+  margin-top: auto;
+}
+
+.toggle-button.on {
+  background-color: #ffeb3b;
+  color: #333;
+}
+
+.toggle-button.off {
+  background-color: #555;
+}
+
+.toggle-button:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.toggle-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

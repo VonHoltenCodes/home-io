@@ -1,0 +1,145 @@
+.thermostat-tile {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  border-left: 5px solid #ff7043;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.thermostat-tile.active {
+  box-shadow: 0 0 15px rgba(255, 112, 67, 0.5);
+}
+
+.thermostat-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left;
+}
+
+.thermostat-temperature {
+  font-size: 3rem;
+  font-weight: bold;
+  margin: 10px 0;
+  color: #fff;
+}
+
+.thermostat-details {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.thermostat-mode {
+  text-transform: capitalize;
+}
+
+.mode-heat {
+  color: #ff7043;
+}
+
+.mode-cool {
+  color: #42a5f5;
+}
+
+.mode-off {
+  color: #aaa;
+}
+
+.thermostat-setpoint {
+  background-color: #3d3d3d;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.setpoint-display {
+  display: flex;
+  justify-content: space-between;
+}
+
+.setpoint-value {
+  font-weight: bold;
+  color: #fff;
+}
+
+.temperature-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.temperature-editor input[type="range"] {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.temperature-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.thermostat-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.mode-button {
+  flex: 1;
+  background-color: #3d3d3d;
+  border: none;
+  color: #ddd;
+  padding: 8px 0;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-button:hover:not(:disabled) {
+  background-color: #4d4d4d;
+}
+
+.mode-button.active {
+  background-color: #555;
+  font-weight: bold;
+  color: #fff;
+}
+
+.mode-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.set-temp-button, .cancel-button {
+  background-color: #555;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.set-temp-button {
+  background-color: #ff7043;
+}
+
+.room-sensors-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #42a5f5;
+  color: white;
+  font-size: 0.7rem;
+  padding: 3px 8px;
+  border-radius: 10px;
+}

@@ -1,0 +1,74 @@
+.dashboard {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.device-section {
+  margin-bottom: 30px;
+}
+
+.device-section h2 {
+  margin-bottom: 20px;
+  font-size: 1.5rem;
+  color: #fff;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #444;
+}
+
+.device-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  color: #aaa;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-left: 4px solid #fff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-container {
+  padding: 30px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  text-align: center;
+  margin: 20px 0;
+}
+
+.error-container button {
+  background-color: #444;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.empty-state {
+  padding: 50px 20px;
+  background-color: #2d2d2d;
+  border-radius: 8px;
+  text-align: center;
+  color: #aaa;
+}
