@@ -3,13 +3,17 @@ import { getSystemInfo } from './utils/api';
 import Dashboard from './components/Dashboard';
 import ZigbeePage from './components/ZigbeePage';
 import Navigation from './components/Navigation';
+import { ThemeProvider, useTheme } from './utils/ThemeContext';
+import ThemeToggle from './components/ThemeToggle';
 import './App.css';
+import './theme.css';
 
-function App() {
+function AppContent() {
   const [systemInfo, setSystemInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [activePage, setActivePage] = useState('dashboard');
+  const { theme } = useTheme();
 
   useEffect(() => {
     // Fetch system information from the API
@@ -61,6 +65,7 @@ function App() {
             </div>
           )}
         </div>
+        <ThemeToggle />
       </header>
       
       <Navigation activePage={activePage} onChangePage={setActivePage} />
@@ -71,8 +76,20 @@ function App() {
       
       <footer className="App-footer">
         <p>Home-IO - A Custom Home Automation Hub</p>
+        <div className="theme-info">
+          {theme === 'retro' && <span>RETRO MODE ACTIVATED</span>}
+          {theme === 'night' && <span>NIGHT OPS MODE ENGAGED</span>}
+        </div>
       </footer>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

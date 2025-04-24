@@ -1,0 +1,868 @@
+/* Default Theme */
+:root {
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --border-color: #333;
+  --text-primary: #f5f5f5;
+  --text-secondary: #aaa;
+  --accent-color: #42a5f5;
+  --tile-hover-shadow: rgba(0, 0, 0, 0.2);
+}
+
+/* Night Ops Theme - Green night vision inspired */
+.theme-night {
+  --bg-primary: #000000;
+  --bg-secondary: #0a0a0a;
+  --border-color: #00ff00;
+  --text-primary: #00ff00;
+  --text-secondary: #00cc00;
+  --accent-color: #00ff00;
+  --tile-hover-shadow: rgba(0, 255, 0, 0.3);
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%2300ff00' fill-opacity='0.1'/%3E%3C/svg%3E");
+  --scan-line: linear-gradient(to bottom, transparent, rgba(0, 255, 0, 0.05) 50%, transparent);
+  --glow-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+}
+
+/* Retro Theme - Inspired by vonholtencodes.com */
+.theme-retro {
+  --bg-primary: #111111;
+  --bg-secondary: #181818;
+  --border-color: #ff4500;
+  --text-primary: #ff4500;
+  --text-secondary: #ff8c69;
+  --accent-color: #ff4500;
+  --tile-hover-shadow: rgba(255, 69, 0, 0.3);
+  
+  /* Add additional retro theme variables */
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23ff4500' fill-opacity='0.1'/%3E%3C/svg%3E");
+  --scan-line: linear-gradient(to bottom, transparent, rgba(255, 69, 0, 0.05) 50%, transparent);
+  --glow-shadow: 0 0 8px rgba(255, 69, 0, 0.4);
+  --retro-overlay: repeating-linear-gradient(rgba(255, 69, 0, 0.03) 0px, rgba(255, 69, 0, 0.03) 1px, transparent 1px, transparent 2px);
+  --pixel-border: url("data:image/svg+xml,%3Csvg width='3' height='3' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h3v3H0V0z' fill='%23ff4500' fill-opacity='0.8'/%3E%3C/svg%3E");
+  --font-family-retro: 'Press Start 2P', 'VT323', 'Courier New', monospace;
+}
+
+/* Apply theme classes */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Arial', sans-serif;
+  transition: all 0.3s ease;
+}
+
+.theme-retro body {
+  font-family: var(--font-family-retro);
+  letter-spacing: 1px;
+  background-image: var(--grid-overlay), var(--retro-overlay);
+  position: relative;
+}
+
+.theme-night body {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  background-image: var(--grid-overlay);
+  position: relative;
+}
+
+/* Import retro fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* Create scanline effect */
+.theme-retro body::before,
+.theme-night body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--scan-line);
+  background-size: 100% 4px;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+/* Add retro text glow effect */
+.theme-retro h1, 
+.theme-retro h2, 
+.theme-retro button,
+.theme-retro .device-name,
+.theme-night h1, 
+.theme-night h2, 
+.theme-night button,
+.theme-night .device-name {
+  text-shadow: var(--glow-shadow);
+  letter-spacing: 2px;
+}
+
+/* Night vision mode effect */
+.theme-night body {
+  position: relative;
+}
+
+.theme-night body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Theme specific element styling */
+.theme-retro .App-header {
+  border-color: var(--border-color);
+  background-color: var(--bg-secondary);
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% calc(100% - 15px),
+    calc(100% - 15px) 100%,
+    15px 100%,
+    0 calc(100% - 15px)
+  );
+  border-bottom: 3px solid var(--border-color);
+  padding-bottom: 30px;
+}
+
+.theme-retro .App-header h1 {
+  font-family: 'Press Start 2P', monospace;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--text-primary);
+  text-shadow: 3px 3px 0 rgba(0,0,0,0.8), 0 0 15px var(--text-primary);
+  transform: skew(-3deg);
+  margin-bottom: 5px;
+}
+
+.theme-retro .system-info {
+  font-family: 'VT323', monospace;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  background: rgba(255, 69, 0, 0.1);
+  display: inline-block;
+  padding: 5px 15px;
+  border-radius: 0;
+  border: 1px solid var(--border-color);
+}
+
+.theme-retro .main-navigation {
+  border-color: var(--border-color);
+  background-color: var(--bg-secondary);
+  font-family: 'VT323', monospace;
+  padding: 0;
+  border-bottom: 2px solid var(--border-color);
+  position: relative;
+  overflow: visible;
+}
+
+.theme-retro .nav-item {
+  font-family: 'VT323', monospace;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  padding: 15px 25px;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+  transition: all 0.3s;
+  border-right: 1px solid var(--border-color);
+}
+
+.theme-retro .nav-item:hover {
+  background-color: rgba(255, 69, 0, 0.15);
+  color: var(--text-primary);
+}
+
+.theme-retro .nav-item.active {
+  background-color: rgba(255, 69, 0, 0.2);
+  box-shadow: inset 0 0 10px rgba(255, 69, 0, 0.2);
+}
+
+.theme-retro .nav-item.active::after {
+  height: 4px;
+}
+
+.theme-retro .App-footer {
+  border-color: var(--border-color);
+  background-color: var(--bg-secondary);
+  border-top: 2px solid var(--border-color);
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+  padding: 15px 20px;
+  position: relative;
+}
+
+.theme-retro .theme-info {
+  margin-top: 5px;
+  font-family: 'Press Start 2P', monospace;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px var(--text-primary);
+}
+
+/* Default styling for night theme elements */
+.theme-night .App-header,
+.theme-night .main-navigation,
+.theme-night .App-footer {
+  border-color: var(--border-color);
+  background-color: var(--bg-secondary);
+}
+
+.theme-retro .device-tile {
+  border: none;
+  background-color: var(--bg-secondary);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2), 0 0 5px rgba(255, 69, 0, 0.3);
+  position: relative;
+  overflow: visible;
+  font-family: var(--font-family-retro);
+  border-radius: 0;
+  padding: 25px 15px 15px;
+  margin: 10px;
+  transform-style: preserve-3d;
+  perspective: 800px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  
+  /* Dramatic angled clip path resembling a futuristic computer panel */
+  clip-path: polygon(
+    0% 20px,     /* more dramatic top left */
+    20px 0%,     /* more dramatic top left */
+    calc(100% - 0px) 0%,  /* sharp top right */
+    100% 20px,   /* angled top right */
+    100% calc(100% - 0px),  /* sharp bottom right */
+    calc(100% - 40px) 100%,  /* larger cut bottom right */
+    0% 100%   /* sharp bottom left */
+  );
+}
+
+/* Create borders using pseudo-elements for more control */
+.theme-retro .device-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border: 2px solid var(--border-color);
+  border-left-width: 5px;
+  clip-path: polygon(
+    0% 20px,     /* more dramatic top left */
+    20px 0%,     /* more dramatic top left */
+    calc(100% - 0px) 0%,  /* sharp top right */
+    100% 20px,   /* angled top right */
+    100% calc(100% - 0px),  /* sharp bottom right */
+    calc(100% - 40px) 100%,  /* larger cut bottom right */
+    0% 100%   /* sharp bottom left */
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add tech panel detail in corner */
+.theme-retro .device-tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: 
+    linear-gradient(135deg, var(--border-color) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, var(--border-color) 0%, var(--border-color) 5%, transparent 5%, transparent 10%);
+  clip-path: polygon(0 0, 50px 0, 0 50px);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Add tech detail to bottom right */
+.theme-retro .device-tile > div {
+  position: relative;
+  z-index: 2;
+}
+
+.theme-retro .device-tile > div::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background-image: 
+    linear-gradient(45deg, transparent 48%, var(--border-color) 48%, var(--border-color) 52%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, var(--border-color) 48%, var(--border-color) 52%, transparent 52%);
+  background-size: 10px 10px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* Add tech corner notch */
+.theme-retro .device-tile > div::before {
+  content: '';
+  position: absolute;
+  top: -25px;
+  right: -25px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--border-color);
+  opacity: 0.3;
+  transform: rotate(45deg);
+  pointer-events: none;
+  border: 1px solid var(--text-primary);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 70% 50%, 50% 70%, 0 100%);
+}
+
+/* Add corner label for device */
+.theme-retro .device-corner-label {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  color: var(--text-secondary);
+  font-size: 0.55rem;
+  font-family: 'VT323', monospace;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 1px 4px;
+  border-radius: 0;
+  border-left: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  letter-spacing: 1px;
+  z-index: 3;
+}
+
+.theme-night .device-tile {
+  border: 1px solid var(--border-color);
+  border-left-width: 5px;
+  background-color: var(--bg-secondary);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-retro .device-tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,69,0,0.1) 0%, rgba(0,0,0,0) 50%);
+  pointer-events: none;
+}
+
+.theme-night .device-tile::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(0,255,0,0.1) 0%, rgba(0,0,0,0) 50%);
+  pointer-events: none;
+}
+
+.theme-retro .device-tile:hover {
+  box-shadow: 0 0 20px var(--tile-hover-shadow), inset 0 0 15px rgba(255, 69, 0, 0.2);
+  transform: translateY(-5px) scale(1.03) rotateX(5deg) rotateY(-2deg);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-retro .device-tile:hover::before {
+  border-color: var(--text-primary);
+  box-shadow: 0 0 15px var(--border-color);
+}
+
+/* Add pulsing effect on hover */
+.theme-retro .device-tile:hover::after {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.5; }
+}
+
+.theme-night .device-tile:hover {
+  box-shadow: 0 0 15px var(--tile-hover-shadow);
+  transform: translateY(-3px) scale(1.02);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-retro .device-name {
+  text-transform: uppercase;
+  padding-bottom: 5px;
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 69, 0, 0.8);
+  margin-bottom: 15px;
+  margin-top: 5px;
+  position: relative;
+  display: inline-block;
+  border: none;
+}
+
+.theme-retro .device-name::before {
+  content: '<<';
+  color: var(--text-secondary);
+  margin-right: 8px;
+  font-size: 0.8em;
+  vertical-align: middle;
+  text-shadow: none;
+}
+
+.theme-retro .device-name::after {
+  content: '>>';
+  color: var(--text-secondary);
+  margin-left: 8px;
+  font-size: 0.8em;
+  vertical-align: middle;
+  text-shadow: none;
+}
+
+/* Add hexagonal device ID number */
+.theme-retro .device-tile .device-name-wrapper {
+  position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px dotted var(--text-secondary);
+}
+
+.theme-retro .device-tile .device-name-wrapper::after {
+  content: 'ID:' attr(data-device-id, '0xAF468');
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 0.6rem;
+  font-family: 'VT323', monospace;
+  color: var(--text-secondary);
+  background: rgba(255, 69, 0, 0.1);
+  padding: 2px 5px;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border-color);
+  border-left: 1px solid var(--border-color);
+  letter-spacing: 1px;
+}
+
+.theme-night .device-name {
+  text-transform: uppercase;
+  border-bottom: 1px dotted var(--text-secondary);
+  padding-bottom: 5px;
+}
+
+.theme-retro .device-icon {
+  margin: 15px 0 20px;
+  transform: scale(1.4);
+  text-shadow: 0 0 15px var(--text-primary);
+  position: relative;
+}
+
+.theme-night .device-icon {
+  margin: 15px 0;
+  transform: scale(1.2);
+}
+
+.theme-retro .device-location {
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  font-family: 'VT323', monospace;
+  background: rgba(255, 69, 0, 0.1);
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 0;
+  border-left: 3px solid var(--border-color);
+  position: relative;
+}
+
+.theme-retro .device-state {
+  margin-top: auto;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 0 0 5px var(--text-primary);
+  border-top: 1px solid rgba(255, 69, 0, 0.3);
+  padding-top: 10px;
+  position: relative;
+  font-family: 'VT323', monospace;
+}
+
+.theme-retro .device-state::before {
+  content: 'STATUS:';
+  display: block;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  margin-bottom: 3px;
+}
+
+/* Add a console cursor effect */
+.theme-retro .device-state::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 15px;
+  background-color: var(--text-primary);
+  margin-left: 5px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.theme-retro .nav-item.active::after,
+.theme-night .nav-item.active::after {
+  background-color: var(--accent-color);
+}
+
+.theme-retro .nav-item,
+.theme-night .nav-item {
+  text-transform: uppercase;
+}
+
+/* Retro theme button styling */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--border-color);
+  color: var(--bg-primary);
+}
+
+.theme-retro .theme-toggle {
+  border: 2px solid var(--border-color);
+  background-color: rgba(255, 69, 0, 0.1);
+  font-family: 'VT323', 'Press Start 2P', monospace;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  transform: skew(-5deg);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.5);
+  border-radius: 0;
+  clip-path: polygon(
+    0% 5px,
+    5px 0%,
+    calc(100% - 5px) 0%,
+    100% 5px,
+    100% calc(100% - 5px),
+    calc(100% - 5px) 100%,
+    5px 100%,
+    0% calc(100% - 5px)
+  );
+}
+
+.theme-retro .theme-toggle:hover {
+  background-color: var(--border-color);
+  color: var(--bg-primary);
+  box-shadow: 5px 5px 0 rgba(0,0,0,0.8);
+  transform: skew(-5deg) translateY(-2px);
+}
+
+.theme-retro .theme-toggle:active {
+  box-shadow: 1px 1px 0 rgba(0,0,0,0.5);
+  transform: skew(-5deg) translateY(2px);
+}
+
+/* Night mode toggle styling */
+.theme-night .theme-toggle {
+  border-width: 2px;
+  font-family: 'Courier New', monospace;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background-color: rgba(0, 255, 0, 0.1);
+}
+
+/* Style buttons in retro theme */
+.theme-retro button {
+  font-family: 'VT323', monospace;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  background-color: rgba(255, 69, 0, 0.1);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 0;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  outline: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+  clip-path: polygon(
+    0% 0%,
+    100% 0%, 
+    100% 70%,
+    90% 100%,
+    0% 100%
+  );
+}
+
+.theme-retro button:hover {
+  background-color: rgba(255, 69, 0, 0.2);
+  box-shadow: 0 0 10px rgba(255, 69, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.theme-retro button:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 5px rgba(255, 69, 0, 0.3);
+}
+
+.theme-retro button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: rgba(128, 128, 128, 0.1);
+  border-color: #555;
+  color: #555;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Special styling for "on" state buttons */
+.theme-retro button.on {
+  background-color: rgba(255, 69, 0, 0.2);
+  border-color: var(--text-primary);
+}
+
+/* Thermostat mode buttons in retro theme */
+.theme-retro .mode-button.active[disabled] {
+  opacity: 1;
+  border: 2px solid var(--text-primary);
+  text-shadow: 0 0 8px var(--text-primary);
+}
+
+.theme-retro .mode-button.active[disabled]:nth-child(1) {
+  background-color: rgba(255, 112, 67, 0.2);
+  border-color: #ff7043;
+  color: #ff7043;
+  box-shadow: 0 0 10px rgba(255, 112, 67, 0.5), inset 0 0 5px rgba(255, 112, 67, 0.3);
+}
+
+.theme-retro .mode-button.active[disabled]:nth-child(2) {
+  background-color: rgba(66, 165, 245, 0.2);
+  border-color: #42a5f5;
+  color: #42a5f5;
+  box-shadow: 0 0 10px rgba(66, 165, 245, 0.5), inset 0 0 5px rgba(66, 165, 245, 0.3);
+}
+
+.theme-retro .mode-button.active[disabled]:nth-child(3) {
+  background-color: rgba(170, 170, 170, 0.2);
+  border-color: #aaaaaa;
+  color: #aaaaaa;
+  box-shadow: 0 0 10px rgba(170, 170, 170, 0.3), inset 0 0 5px rgba(170, 170, 170, 0.2);
+}
+
+/* Bedroom thermostat controls clarification */
+.theme-retro .thermostat-setpoint {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-color);
+  padding: 15px;
+  margin: 15px 0;
+  position: relative;
+}
+
+.theme-retro .thermostat-setpoint::before {
+  content: 'TARGET TEMP';
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  background-color: var(--bg-secondary);
+  padding: 0 5px;
+  font-size: 0.7rem;
+  font-family: 'VT323', monospace;
+  color: var(--text-secondary);
+}
+
+.theme-retro .temperature-editor {
+  padding: 10px 0;
+}
+
+.theme-retro .temperature-editor input[type="range"] {
+  accent-color: var(--text-primary);
+  height: 5px;
+  margin: 15px 0;
+}
+
+.theme-retro .temperature-value {
+  font-family: 'VT323', monospace;
+  font-size: 1.8rem;
+  text-shadow: 0 0 10px var(--text-primary);
+  margin: 5px 0 15px;
+}
+
+.theme-retro .setpoint-display {
+  padding: 5px;
+  border: 1px dashed var(--border-color);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.theme-retro .setpoint-display::after {
+  content: 'CLICK TO ADJUST';
+  display: block;
+  margin-top: 5px;
+  font-size: 0.6rem;
+  color: var(--text-secondary);
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+}
+
+/* Thermostat current temperature label */
+.theme-retro .thermostat-temperature {
+  position: relative;
+  padding-bottom: 15px;
+  font-family: 'VT323', monospace;
+  font-size: 3.5rem;
+  margin: 10px 0 20px;
+  text-shadow: 0 0 15px var(--text-primary);
+  display: inline-block;
+  border-bottom: 2px dashed var(--border-color);
+  padding: 5px 15px 20px;
+  background-color: rgba(255, 69, 0, 0.05);
+}
+
+.theme-retro .current-temp-label {
+  position: absolute;
+  bottom: -5px;
+  right: 0;
+  left: 0;
+  font-size: 0.7rem;
+  font-family: 'VT323', monospace;
+  color: var(--text-secondary);
+  letter-spacing: 1px;
+}
+
+.theme-retro .editor-instruction {
+  color: var(--text-secondary);
+  font-size: 0.7rem;
+  font-family: 'VT323', monospace;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  border-bottom: 1px dotted var(--border-color);
+  padding-bottom: 8px;
+}
+
+.theme-retro .editor-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+/* Specific styling for set-temp and cancel buttons */
+.theme-retro .set-temp-button {
+  border-color: #ff7043;
+  color: #ff7043;
+}
+
+.theme-retro .cancel-button {
+  border-color: #aaa;
+  color: #aaa;
+}
+
+/* Off mode display styling */
+.theme-retro .off-mode-display {
+  font-family: 'VT323', monospace;
+  padding: 15px 10px;
+  text-align: center;
+  border: 1px dashed var(--border-color);
+  color: #aaa;
+}
+
+.theme-retro .off-mode-message {
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.theme-retro .off-mode-message::before,
+.theme-retro .off-mode-message::after {
+  content: '•';
+  margin: 0 8px;
+  color: var(--border-color);
+}
+
+/* Mode buttons specific styling */
+.theme-retro .heat-button {
+  border-color: rgba(255, 112, 67, 0.5);
+}
+
+.theme-retro .cool-button {
+  border-color: rgba(66, 165, 245, 0.5);
+}
+
+.theme-retro .off-button {
+  border-color: rgba(170, 170, 170, 0.5);
+}
+
+/* Thermostat brand info */
+.theme-retro .thermostat-brand {
+  margin-top: 15px;
+  font-size: 0.7rem;
+  font-family: 'VT323', monospace;
+  color: var(--text-secondary);
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px dotted var(--border-color);
+  padding-top: 8px;
+}
+
+.theme-retro .model-number {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 2px 5px;
+  letter-spacing: 1px;
+}
+
+/* Retro content area enhancements */
+.theme-retro .App-content {
+  background-image: 
+    linear-gradient(to right, rgba(255, 69, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 69, 0, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  position: relative;
+  padding-top: 30px;
+}
+
+.theme-retro .App-content::before {
+  content: 'SYS.32//';
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  font-family: 'VT323', monospace;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+}
+
+.theme-retro .device-grid h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding-bottom: 15px;
+  position: relative;
+  margin-bottom: 30px;
+  display: inline-block;
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.8);
+  border-bottom: 2px solid var(--border-color);
+}

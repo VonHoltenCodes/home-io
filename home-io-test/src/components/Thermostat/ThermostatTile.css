@@ -109,9 +109,31 @@
 }
 
 .mode-button.active {
-  background-color: #555;
+  position: relative;
   font-weight: bold;
   color: #fff;
+}
+
+/* Fix illumination for mode buttons - light up when active */
+.mode-button.active[disabled] {
+  opacity: 1;
+  cursor: default;
+}
+
+/* Specific colors for each mode when active */
+.mode-button.active[disabled]:nth-child(1) {
+  background-color: #ff7043; /* Heat - orange */
+  box-shadow: 0 0 10px rgba(255, 112, 67, 0.5);
+}
+
+.mode-button.active[disabled]:nth-child(2) {
+  background-color: #42a5f5; /* Cool - blue */
+  box-shadow: 0 0 10px rgba(66, 165, 245, 0.5);
+}
+
+.mode-button.active[disabled]:nth-child(3) {
+  background-color: #757575; /* Off - gray */
+  box-shadow: 0 0 10px rgba(170, 170, 170, 0.3);
 }
 
 .mode-button:disabled {

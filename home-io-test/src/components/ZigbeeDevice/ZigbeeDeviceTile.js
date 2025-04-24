@@ -130,77 +130,110 @@ const ZigbeeDeviceTile = ({ device, onSendCommand }) => {
       case 'thermostat':
         return (
           <div className="zigbee-controls thermostat-controls">
+            {/* Current Temperature Display */}
             <div className="temperature-display">
-              {device.temperature}°F
-              {device.humidity !== undefined && <span> | {device.humidity}% RH</span>}
+              <div className="current-value">{device.temperature}°F</div>
+              {device.humidity !== undefined && 
+                <div className="humidity-value">{device.humidity}% RH</div>
+              }
             </div>
             
+            {/* Current Mode Indicator */}
+            <div className="current-mode">
+              <span className="mode-label">Current Mode: </span>
+              <span className={`mode-value mode-${device.mode || 'off'}`}>
+                {device.mode ? device.mode.toUpperCase() : 'OFF'}
+              </span>
+              {device.state && 
+                <span className={`state-value ${device.state !== 'idle' ? 'active' : ''}`}>
+                  ({device.state !== 'idle' ? 'RUNNING' : 'IDLE'})
+                </span>
+              }
+            </div>
+            
+            {/* Temperature Setpoints with Improved +/- Controls */}
             <div className="setpoint-controls">
-              <div className="setpoint">
-                <label>Heat</label>
-                <button 
-                  className="setpoint-button"
-                  onClick={() => handleCommand('temperature', { 
-                    value: (device.heat_setpoint || 70) - 1,
-                    mode: 'heat'
-                  })}
-                  disabled={loading}
-                >-</button>
-                <span>{device.heat_setpoint || 70}°</span>
-                <button 
-                  className="setpoint-button"
-                  onClick={() => handleCommand('temperature', { 
-                    value: (device.heat_setpoint || 70) + 1,
-                    mode: 'heat'
-                  })}
-                  disabled={loading}
-                >+</button>
-              </div>
-              
-              <div className="setpoint">
-                <label>Cool</label>
-                <button 
-                  className="setpoint-button"
-                  onClick={() => handleCommand('temperature', { 
-                    value: (device.cool_setpoint || 75) - 1,
-                    mode: 'cool'
-                  })}
-                  disabled={loading}
-                >-</button>
-                <span>{device.cool_setpoint || 75}°</span>
-                <button 
-                  className="setpoint-button"
-                  onClick={() => handleCommand('temperature', { 
-                    value: (device.cool_setpoint || 75) + 1,
-                    mode: 'cool'
-                  })}
-                  disabled={loading}
-                >+</button>
+              <div className="setpoint-section">
+                <div className="setpoint-header">Temperature Control</div>
+                
+                <div className="setpoint-row">
+                  <label className="setpoint-label">Heat:</label>
+                  <div className="setpoint-buttons">
+                    <button 
+                      className="setpoint-button minus"
+                      onClick={() => handleCommand('temperature', { 
+                        value: (device.heat_setpoint || 70) - 1,
+                        mode: 'heat'
+                      })}
+                      disabled={loading || device.mode === 'off'}
+                      aria-label="Decrease heat setpoint"
+                    >−</button>
+                    <span className="setpoint-value">{device.heat_setpoint || 70}°</span>
+                    <button 
+                      className="setpoint-button plus"
+                      onClick={() => handleCommand('temperature', { 
+                        value: (device.heat_setpoint || 70) + 1,
+                        mode: 'heat'
+                      })}
+                      disabled={loading || device.mode === 'off'}
+                      aria-label="Increase heat setpoint"
+                    >+</button>
+                  </div>
+                </div>
+                
+                <div className="setpoint-row">
+                  <label className="setpoint-label">Cool:</label>
+                  <div className="setpoint-buttons">
+                    <button 
+                      className="setpoint-button minus"
+                      onClick={() => handleCommand('temperature', { 
+                        value: (device.cool_setpoint || 75) - 1,
+                        mode: 'cool'
+                      })}
+                      disabled={loading || device.mode === 'off'}
+                      aria-label="Decrease cool setpoint"
+                    >−</button>
+                    <span className="setpoint-value">{device.cool_setpoint || 75}°</span>
+                    <button 
+                      className="setpoint-button plus"
+                      onClick={() => handleCommand('temperature', { 
+                        value: (device.cool_setpoint || 75) + 1,
+                        mode: 'cool'
+                      })}
+                      disabled={loading || device.mode === 'off'}
+                      aria-label="Increase cool setpoint"
+                    >+</button>
+                  </div>
+                </div>
               </div>
             </div>
             
-            <div className="mode-controls">
-              <button 
-                className={`mode-button ${device.mode === 'heat' ? 'active' : ''}`}
-                onClick={() => handleCommand('mode', { mode: 'heat' })}
-                disabled={loading}
-              >
-                Heat
-              </button>
-              <button 
-                className={`mode-button ${device.mode === 'cool' ? 'active' : ''}`}
-                onClick={() => handleCommand('mode', { mode: 'cool' })}
-                disabled={loading}
-              >
-                Cool
-              </button>
-              <button 
-                className={`mode-button ${device.mode === 'off' ? 'active' : ''}`}
-                onClick={() => handleCommand('mode', { mode: 'off' })}
-                disabled={loading}
-              >
-                Off
-              </button>
+            {/* Mode Selection Buttons */}
+            <div className="mode-controls-section">
+              <div className="mode-header">Mode Selection</div>
+              <div className="mode-controls">
+                <button 
+                  className={`mode-button heat ${device.mode === 'heat' ? 'active' : ''}`}
+                  onClick={() => handleCommand('mode', { mode: 'heat' })}
+                  disabled={loading || device.mode === 'heat'}
+                >
+                  Heat
+                </button>
+                <button 
+                  className={`mode-button cool ${device.mode === 'cool' ? 'active' : ''}`}
+                  onClick={() => handleCommand('mode', { mode: 'cool' })}
+                  disabled={loading || device.mode === 'cool'}
+                >
+                  Cool
+                </button>
+                <button 
+                  className={`mode-button off ${device.mode === 'off' ? 'active' : ''}`}
+                  onClick={() => handleCommand('mode', { mode: 'off' })}
+                  disabled={loading || device.mode === 'off'}
+                >
+                  Off
+                </button>
+              </div>
             </div>
           </div>
         );
