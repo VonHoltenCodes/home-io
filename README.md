@@ -2,6 +2,8 @@
 
 Home-IO is a modular, extensible, and open-source home automation system designed to run on a Small Form Factor (SFF) PC connected to a wall-mounted touchscreen. It provides a unified interface for controlling and monitoring smart home devices using a fully custom software stack, without relying on third-party home automation platforms.
 
+> **IMPORTANT**: This project is currently in MVP (Minimum Viable Product) development status and is intended for educational and recreational purposes only. It is not yet ready for production use.
+
 ## Features
 
 - **Modular Architecture**: Easily extendable with plugins for different IoT protocols and device types
@@ -10,6 +12,23 @@ Home-IO is a modular, extensible, and open-source home automation system designe
 - **Open Source**: Full control over your data and system behavior
 - **Device Support**: Z-Wave, Zigbee, Wi-Fi, and API-based IoT devices
 - **Automation Engine**: Create rules for automated actions based on device states and sensor readings
+
+## Integration Strategy
+
+Home-IO uses a dual-track approach to device integration:
+
+### Production-Ready Open Standards (Core Platform)
+- **Z-Wave**: Local control via USB dongle, no cloud dependencies
+- **Zigbee**: Local control via USB coordinator, no cloud dependencies
+- **MQTT**: Local message broker for custom sensors and devices
+- **DIY Sensors**: Direct USB or GPIO connections for custom hardware
+
+### Development/Demo API Integrations (Optional)
+- **Tuya API**: For development/testing with Tuya-compatible devices
+- **Honeywell API**: For development/testing with Honeywell thermostats
+- **Other vendor APIs**: Implemented as plugins, not core dependencies
+
+> **Note**: The proprietary vendor APIs are provided for development convenience and demonstration purposes only. The long-term vision for Home-IO is to prioritize open standards (Z-Wave, Zigbee) for production deployments to ensure independence from third-party cloud services.
 
 ## System Architecture
 
@@ -45,10 +64,10 @@ home-io/
 │   ├── db_manager.py     # Database operations
 │   └── plugin_manager.py # Plugin system
 ├── plugins/              # Plugin modules
-│   ├── zwave/            # Z-Wave integration
-│   ├── zigbee/           # Zigbee integration
-│   ├── iot_apis/         # Third-party API integrations
-│   └── sensors/          # Direct sensor integration
+│   ├── zwave/            # Z-Wave integration (core)
+│   ├── zigbee/           # Zigbee integration (core)
+│   ├── tuya/             # Tuya API integration (development)
+│   ├── honeywell/        # Honeywell API integration (development)
 ├── utils/                # Utility functions
 ├── config/               # Configuration files
 ├── data/                 # Database and persistent data
@@ -66,7 +85,7 @@ home-io/
 - Small Form Factor PC with Linux (Ubuntu/Debian recommended)
 - Python 3.10 or higher
 - Node.js 16 or higher (for UI development)
-- Z-Wave and/or Zigbee USB dongles (optional)
+- Z-Wave and/or Zigbee USB dongles (recommended for production)
 
 ### Backend Setup
 
@@ -87,32 +106,31 @@ home-io/
    pip install -r requirements.txt
    ```
 
-4. Start the FastAPI server:
+4. Configure your environment:
    ```bash
-   python main.py
+   # Create a .env file for API credentials (not tracked by git)
+   touch .env
+   # Add your credentials if using API integrations
+   # TUYA_API_KEY=your_key
+   # TUYA_API_SECRET=your_secret
+   # HONEYWELL_CLIENT_ID=your_id
+   # HONEYWELL_CLIENT_SECRET=your_secret
    ```
 
-### Frontend Setup
-
-1. Navigate to the frontend directory:
+5. Start the all-in-one development server:
    ```bash
-   cd home-io-test
+   ./start.sh
    ```
 
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Hardware Configuration
 
-3. Start the development server:
-   ```bash
-   npm start
-   ```
+1. Connect your hardware:
+   - Z-Wave dongle (typically `/dev/ttyUSB0`)
+   - Zigbee coordinator (typically `/dev/ttyUSB1`)
 
-4. For production build:
-   ```bash
-   npm run build
-   ```
+2. Update configuration:
+   - Edit `config/config.json` to update hardware paths
+   - Set `mock_network` to `false` for protocols with actual hardware
 
 ## Hardware Setup
 
@@ -147,9 +165,23 @@ Once the server is running, access the Swagger UI documentation at:
 http://localhost:8000/docs
 ```
 
+## Security Considerations
+
+- API keys and credentials should never be committed to the repository
+- Store sensitive configuration in the `.env` file (which is git-ignored)
+- For production deployment, enable authentication and use HTTPS
+- Restrict access to the system from outside your local network
+
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+For educational and recreational purposes only. Not intended for commercial use at this time.
+
+## Credits
+
+- **Created by**: VonHoltenCodes
+- **Assisted by**: Claude AI (Anthropic)
 
 ## Contributions
 
