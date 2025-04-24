@@ -169,3 +169,47 @@ export const setSmartPlugSchedule = (plugId, onTime, offTime, enabled = true) =>
     method: 'POST',
   });
 };
+
+/**
+ * Get all Zigbee devices
+ */
+export const getZigbeeDevices = () => fetchApi('zigbee');
+
+/**
+ * Get Zigbee devices by type
+ * 
+ * @param {string} type - Device type (light, switch, sensor, etc.)
+ */
+export const getZigbeeDevicesByType = (type) => fetchApi(`zigbee/types/${type}`);
+
+/**
+ * Get a specific Zigbee device
+ * 
+ * @param {string} deviceId - Device ID
+ */
+export const getZigbeeDevice = (deviceId) => fetchApi(`zigbee/${deviceId}`);
+
+/**
+ * Send command to Zigbee device
+ * 
+ * @param {string} deviceId - Device ID
+ * @param {string} command - Command name
+ * @param {Object} params - Command parameters
+ */
+export const sendZigbeeCommand = (deviceId, command, params = {}) => {
+  return fetchApi(`zigbee/${deviceId}/command?command=${command}`, {
+    method: 'POST',
+    body: JSON.stringify(params),
+  });
+};
+
+/**
+ * Identify a Zigbee device (make it blink/beep)
+ * 
+ * @param {string} deviceId - Device ID
+ */
+export const identifyZigbeeDevice = (deviceId) => {
+  return fetchApi(`zigbee/${deviceId}/identify`, {
+    method: 'POST',
+  });
+};

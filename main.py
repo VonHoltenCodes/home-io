@@ -17,6 +17,7 @@ from core.plugin_manager import PluginManager
 from api.routes.devices import router as devices_router
 from api.routes.thermostats import router as thermostats_router
 from api.routes.smart_plugs import router as smart_plugs_router
+from api.routes.zigbee import router as zigbee_router
 
 # Setup logging
 logging.basicConfig(
@@ -56,6 +57,7 @@ app.add_middleware(
 app.include_router(devices_router, prefix="/api/devices", tags=["devices"])
 app.include_router(thermostats_router, prefix="/api/thermostats", tags=["thermostats"])
 app.include_router(smart_plugs_router, prefix="/api/smart_plugs", tags=["smart_plugs"])
+app.include_router(zigbee_router, prefix="/api/zigbee", tags=["zigbee"])
 
 # Health check endpoint
 @app.get("/api/health")

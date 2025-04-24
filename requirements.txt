@@ -25,14 +25,16 @@ schedule>=1.2.0
 pytest>=7.4.0
 httpx>=0.24.1  # Also used for testing FastAPI apps
 
-# Optional hardware libraries (commented out initially)
-# For Z-Wave integration use one of these:
-# python-openzwave>=0.4.19  # For Z-Wave integration
-# zwave-js-server-python>=0.45.0  # Alternative Z-Wave library
+# Z-Wave integration (commented out initially)
+# python-openzwave>=0.4.19  # Option 1
+# zwave-js-server-python>=0.45.0  # Option 2 (uses Node.js zwave-js-server)
 
-# For Zigbee integration:
-# zigpy>=0.56.0
-# zigpy-xbee>=0.18.0
-# zigpy-deconz>=0.20.0
-# zigpy-zigate>=0.11.0
-# zigpy-cc>=0.11.0
+# Zigbee integration (commented out initially)
+# zigpy>=0.56.0  # Core Zigbee library
+# zigpy-xbee>=0.18.0  # For XBee coordinators
+# zigpy-deconz>=0.20.0  # For ConBee, RaspBee coordinators
+# zigpy-zigate>=0.11.0  # For ZiGate coordinators 
+# zigpy-cc>=0.11.0  # For Texas Instruments CC coordinators
+
+# For zigbee2mqtt integration
+# paho-mqtt>=2.2.1

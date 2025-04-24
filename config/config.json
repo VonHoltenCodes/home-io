@@ -17,12 +17,20 @@
     "backup_interval_hours": 24
   },
   "plugins": {
-    "enabled": ["zwave", "tuya", "honeywell"],
+    "enabled": ["zwave", "zigbee", "tuya", "honeywell"],
     "discovery": true,
     "path": "plugins",
     "config": {
       "zwave": {
         "controller_path": "/dev/ttyUSB0",
+        "mock_network": true
+      },
+      "zigbee": {
+        "controller_path": "/dev/ttyUSB1",
+        "library_mode": "zigbee2mqtt",
+        "mqtt_broker": "localhost",
+        "mqtt_port": 1883,
+        "mqtt_topic_prefix": "zigbee2mqtt",
         "mock_network": true
       },
       "tuya": {

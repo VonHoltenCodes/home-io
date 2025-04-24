@@ -1,0 +1,45 @@
+.zigbee-devices-container {
+  width: 100%;
+}
+
+.zigbee-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.filter-button {
+  background-color: #3d3d3d;
+  border: none;
+  color: #ddd;
+  padding: 8px 15px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filter-button:hover {
+  background-color: #4d4d4d;
+}
+
+.filter-button.active {
+  background-color: #42a5f5;
+  color: white;
+  font-weight: bold;
+}
+
+.zigbee-devices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.no-devices-message {
+  grid-column: 1 / -1;
+  padding: 40px;
+  background-color: #2d2d2d;
+  border-radius: 10px;
+  text-align: center;
+  color: #aaa;
+}

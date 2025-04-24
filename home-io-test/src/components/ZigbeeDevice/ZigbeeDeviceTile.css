@@ -1,0 +1,237 @@
+.zigbee-device-tile {
+  background-color: #2d2d2d;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #333;
+}
+
+.zigbee-device-tile.light {
+  border-left: 5px solid #42a5f5;
+}
+
+.zigbee-device-tile.switch {
+  border-left: 5px solid #66bb6a;
+}
+
+.zigbee-device-tile.sensor {
+  border-left: 5px solid #ab47bc;
+}
+
+.zigbee-device-tile.contact {
+  border-left: 5px solid #ff7043;
+}
+
+.zigbee-device-tile.thermostat {
+  border-left: 5px solid #ffa726;
+}
+
+.device-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.device-title {
+  text-align: left;
+}
+
+.device-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.device-type {
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+.device-icon {
+  font-size: 2rem;
+}
+
+/* Controls for interactive devices */
+.zigbee-controls {
+  margin: 15px 0;
+}
+
+.control-button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s;
+}
+
+.control-button.on {
+  background-color: #42a5f5;
+  color: white;
+}
+
+.control-button.off {
+  background-color: #555;
+  color: white;
+}
+
+.control-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.slider-control {
+  margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.slider-control label {
+  text-align: left;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.slider-control input[type="range"] {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+/* Info display for sensor devices */
+.zigbee-info {
+  margin: 10px 0;
+}
+
+.sensor-data {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sensor-value {
+  text-align: left;
+  font-size: 1rem;
+}
+
+.sensor-value .active {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.sensor-value .inactive {
+  color: #4caf50;
+}
+
+.battery-indicator {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.battery-indicator.low {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Power monitoring for switches */
+.power-info {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #ccc;
+  text-align: center;
+}
+
+/* Thermostat specific styles */
+.thermostat-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.temperature-display {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.setpoint-controls {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.setpoint {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.setpoint label {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.setpoint span {
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+.setpoint-button {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background-color: #555;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.mode-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.mode-button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  background-color: #555;
+  color: white;
+  cursor: pointer;
+}
+
+.mode-button.active {
+  background-color: #42a5f5;
+  font-weight: bold;
+}
+
+/* Actions section */
+.device-actions {
+  margin-top: auto;
+  padding-top: 15px;
+  border-top: 1px solid #444;
+}
+
+.identify-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #ddd;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.identify-button:hover {
+  background-color: #444;
+}

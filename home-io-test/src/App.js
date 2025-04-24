@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { getSystemInfo } from './utils/api';
 import Dashboard from './components/Dashboard';
+import ZigbeePage from './components/ZigbeePage';
+import Navigation from './components/Navigation';
 import './App.css';
 
 function App() {
   const [systemInfo, setSystemInfo] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activePage, setActivePage] = useState('dashboard');
 
   useEffect(() => {
     // Fetch system information from the API
@@ -24,6 +27,17 @@ function App() {
     
     fetchSystemInfo();
   }, []);
+
+  // Render the active page component
+  const renderActivePage = () => {
+    switch (activePage) {
+      case 'zigbee':
+        return <ZigbeePage />;
+      case 'dashboard':
+      default:
+        return <Dashboard />;
+    }
+  };
 
   return (
     <div className="App">
@@ -49,8 +63,10 @@ function App() {
         </div>
       </header>
       
+      <Navigation activePage={activePage} onChangePage={setActivePage} />
+      
       <main className="App-content">
-        <Dashboard />
+        {renderActivePage()}
       </main>
       
       <footer className="App-footer">
