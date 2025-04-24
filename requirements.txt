@@ -1,2 +1,38 @@
+# Core server
 fastapi>=0.101.0
 uvicorn>=0.23.2
+gunicorn>=21.2.0
+python-multipart>=0.0.6
+pydantic>=2.4.0
+starlette>=0.27.0
+
+# Data and serialization
+sqlalchemy>=2.0.20
+aiosqlite>=0.19.0
+alembic>=1.12.0
+PyJWT>=2.8.0
+python-dotenv>=1.0.0
+
+# MQTT support for IoT devices
+paho-mqtt>=2.2.1
+
+# Utilities
+httpx>=0.24.1  # For making HTTP requests to external APIs
+python-dateutil>=2.8.2
+schedule>=1.2.0
+
+# Development tools
+pytest>=7.4.0
+httpx>=0.24.1  # Also used for testing FastAPI apps
+
+# Optional hardware libraries (commented out initially)
+# For Z-Wave integration use one of these:
+# python-openzwave>=0.4.19  # For Z-Wave integration
+# zwave-js-server-python>=0.45.0  # Alternative Z-Wave library
+
+# For Zigbee integration:
+# zigpy>=0.56.0
+# zigpy-xbee>=0.18.0
+# zigpy-deconz>=0.20.0
+# zigpy-zigate>=0.11.0
+# zigpy-cc>=0.11.0
