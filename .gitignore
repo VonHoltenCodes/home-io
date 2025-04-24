@@ -1,0 +1,43 @@
+# Python virtual environment
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# React
+home-io-test/node_modules/
+home-io-test/.pnp
+home-io-test/.pnp.js
+home-io-test/coverage/
+home-io-test/build/
+home-io-test/.DS_Store
+home-io-test/.env.local
+home-io-test/.env.development.local
+home-io-test/.env.test.local
+home-io-test/.env.production.local
+home-io-test/npm-debug.log*
+home-io-test/yarn-debug.log*
+home-io-test/yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
