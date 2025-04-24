@@ -7,7 +7,7 @@ Home-IO is a modular, extensible, and open-source home automation system designe
 ## Features
 
 - **Modular Architecture**: Easily extendable with plugins for different IoT protocols and device types
-- **Customizable UI**: React-based frontend with a menu-board style interface
+- **Customizable UI**: React-based frontend with theme options including a stylish retro mode
 - **Local-First**: Runs locally on your network for privacy and reliability
 - **Open Source**: Full control over your data and system behavior
 - **Device Support**: Z-Wave, Zigbee, Wi-Fi, and API-based IoT devices
@@ -42,9 +42,10 @@ The Home-IO system consists of:
 
 2. **Frontend UI**:
    - React web application with touch-optimized interface
-   - Material UI components for a modern, responsive design
+   - Multiple theme options (Default, Retro, Night Ops)
    - Real-time updates from devices
    - Customizable dashboard with draggable tiles
+   - Retro-style UI theme inspired by 80s/90s tech interfaces
 
 3. **IoT Integration**:
    - Z-Wave and Zigbee support via USB dongles
@@ -182,6 +183,30 @@ For educational and recreational purposes only. Not intended for commercial use 
 
 - **Created by**: VonHoltenCodes
 - **Assisted by**: Claude AI (Anthropic)
+
+## UI Themes and Device Controls
+
+Home-IO offers multiple visual themes to personalize your experience:
+
+### Theme Options
+
+- **Default Theme**: Modern dark interface designed for daily use and optimal readability
+- **Retro Theme**: Nostalgic orange/black theme inspired by vintage tech interfaces with:
+  - Stylized tile designs with custom corners and technical details
+  - Pixel-style typography with authentic 80s-style fonts
+  - Decorative tech elements like scan lines and grid overlays
+  - Glow effects and animated interactions
+- **Night Ops Theme**: Green monochrome theme inspired by night vision displays, ideal for low-light environments
+
+### Enhanced Device Controls
+
+The system includes specialized controls for different device types:
+
+- **Thermostats**: Intuitive temperature management with mode-specific controls
+- **Smart Plugs**: Simple on/off toggles with power monitoring 
+- **Zigbee Devices**: Comprehensive management interface with clearly labeled sections
+
+All controls adapt to the current theme while maintaining consistent functionality.
 
 ## Contributions
 
