@@ -13,6 +13,10 @@ class DeviceType(str, Enum):
     CAMERA = "camera"
     SWITCH = "switch"
     OUTLET = "outlet"
+    AUDIO_RECEIVER = "audio_receiver"
+    AUDIO_AMPLIFIER = "audio_amplifier"
+    AUDIO_SPEAKERS = "speakers"
+    AUDIO_TURNTABLE = "turntable"
     OTHER = "other"
 
 

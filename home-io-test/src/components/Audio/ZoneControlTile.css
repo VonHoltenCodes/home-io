@@ -1,0 +1,438 @@
+/* Zone Control Tile Styles */
+
+/* Base styles */
+.zone-control {
+  width: 100%;
+  padding: 15px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.powered-on {
+  background-color: #f5f5f5;
+}
+
+.powered-off {
+  background-color: #e0e0e0;
+  opacity: 0.7;
+}
+
+/* Loading state */
+.zone-control.loading {
+  pointer-events: none;
+}
+
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.loading-spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--text-primary, #fff);
+  border-radius: 50%;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.theme-retro .loading-spinner {
+  border-color: rgba(255, 69, 0, 0.2);
+  border-top-color: var(--text-primary, #ff4500);
+}
+
+.theme-night .loading-spinner {
+  border-color: rgba(0, 255, 0, 0.2);
+  border-top-color: var(--text-primary, #00ff00);
+}
+
+/* Modern theme styles */
+.modern-zone-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.zone-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.zone-power-button {
+  padding: 8px 12px;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.zone-power-button.on {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.zone-power-button.off {
+  background-color: #f44336;
+  color: white;
+}
+
+.zone-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.zone-volume {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.zone-volume label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.zone-volume input[type="range"] {
+  width: 100%;
+  height: 8px;
+}
+
+.source-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.source-selection label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.source-selection select {
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background-color: white;
+}
+
+.source-loading {
+  padding: 10px;
+  text-align: center;
+  color: #888;
+}
+
+/* Retro theme styles */
+.retro-zone-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #333;
+  color: #ddd;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.retro-zone-power {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.retro-zone-power-button {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #444, #222);
+  border: 4px solid #555;
+  position: relative;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+.retro-zone-power-led {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #555;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.retro-zone-power-button.on .retro-zone-power-led {
+  background-color: #ff0000;
+  box-shadow: 0 0 10px #ff0000;
+}
+
+.retro-zone-power-label {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+.retro-zone-volume {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.retro-zone-volume-display {
+  width: 80px;
+  height: 40px;
+  background-color: #000;
+  border: 2px solid #444;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  box-shadow: inset 0 0 5px rgba(255, 0, 0, 0.2);
+}
+
+.retro-zone-volume-value {
+  font-family: 'Courier New', monospace;
+  font-size: 24px;
+  font-weight: bold;
+  color: #ff0000;
+  text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
+}
+
+.retro-zone-volume-slider {
+  width: 100%;
+  height: 20px;
+  -webkit-appearance: none;
+  background-color: #444;
+  border-radius: 10px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.7);
+  outline: none;
+  cursor: pointer;
+}
+
+.retro-zone-volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #777, #555);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.retro-zone-volume-label {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #aaa;
+}
+
+.retro-source-selection {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.retro-source-label {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #aaa;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.retro-source-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.retro-source-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding: 8px;
+  background-color: #444;
+  border: 2px solid #555;
+  border-radius: 5px;
+  cursor: pointer;
+  min-width: 80px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.retro-source-led {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #555;
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.retro-source-button.active {
+  background-color: #333;
+  border-color: #777;
+}
+
+.retro-source-button.active .retro-source-led {
+  background-color: #00ff00;
+  box-shadow: 0 0 10px #00ff00;
+}
+
+.retro-source-name {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: #aaa;
+  text-align: center;
+}
+
+/* Night Ops theme modifications using theme classes */
+.theme-night .retro-zone-container {
+  background-color: var(--bg-secondary, #111);
+  border: 1px solid var(--border-color, #0f0);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.1);
+}
+
+.theme-night .retro-zone-volume,
+.theme-night .retro-source-selection {
+  background-color: #0a0a0a;
+  border: 1px solid var(--border-color, #0f0);
+}
+
+.theme-night .retro-zone-power-button {
+  background: radial-gradient(circle, #222, #000);
+  border-color: var(--border-color, #0f0);
+}
+
+.theme-night .retro-zone-power-button.on .retro-zone-power-led {
+  background-color: var(--text-primary, #00ff00);
+  box-shadow: 0 0 10px var(--text-primary, #00ff00);
+}
+
+.theme-night .retro-zone-power-label,
+.theme-night .retro-zone-volume-label,
+.theme-night .retro-source-label,
+.theme-night .retro-source-name {
+  color: var(--text-primary, #0f0);
+}
+
+.theme-night .retro-zone-volume-display {
+  background-color: #000;
+  border-color: var(--border-color, #0f0);
+  box-shadow: inset 0 0 5px rgba(0, 255, 0, 0.2);
+}
+
+.theme-night .retro-zone-volume-value {
+  color: var(--text-primary, #0f0);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.theme-night .retro-zone-volume-slider {
+  background-color: #222;
+}
+
+.theme-night .retro-zone-volume-slider::-webkit-slider-thumb {
+  background: radial-gradient(circle, #333, #111);
+}
+
+.theme-night .retro-source-button {
+  background-color: #111;
+  border-color: var(--border-color, #0f0);
+}
+
+.theme-night .retro-source-button.active .retro-source-led {
+  background-color: var(--text-primary, #00ff00);
+  box-shadow: 0 0 10px var(--text-primary, #00ff00);
+}
+
+/* Retro theme enhancements */
+.theme-retro .zone-control.powered-on {
+  background-color: var(--bg-secondary, #222);
+}
+
+.theme-retro .retro-zone-container {
+  border-left: 4px solid var(--border-color, #ff4500);
+  clip-path: polygon(
+    0% 0%,
+    100% 0%, 
+    100% 90%,
+    90% 100%,
+    0% 100%
+  );
+}
+
+.theme-retro .retro-zone-volume-display {
+  border: 2px solid var(--border-color, #ff4500);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8), 0 0 5px var(--text-primary, #ff4500);
+}
+
+/* Improved responsive design */
+@media (max-width: 768px) {
+  .retro-source-buttons {
+    grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+    gap: 5px;
+  }
+  
+  .retro-source-button {
+    padding: 5px;
+    min-width: 60px;
+  }
+  
+  .retro-source-name {
+    font-size: 10px;
+  }
+  
+  .modern-zone-container .zone-controls {
+    flex-direction: column;
+  }
+}
+
+/* Better accessibility */
+.zone-control button:focus,
+.retro-zone-power-button:focus,
+.retro-source-button:focus {
+  outline: 2px solid var(--text-primary, #fff);
+  outline-offset: 2px;
+}
+
+.zone-control input[type="range"]:focus {
+  outline: 2px solid var(--text-primary, #fff);
+}
+
+/* Improved disabled state */
+.zone-control.powered-off button:not(.zone-power-button),
+.zone-control.powered-off select,
+.zone-control.powered-off input {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -26,6 +26,10 @@ Home-IO uses a dual-track approach to device integration:
 ### Development/Demo API Integrations (Optional)
 - **Tuya API**: For development/testing with Tuya-compatible devices
 - **Honeywell API**: For development/testing with Honeywell thermostats
+- **Audio Control APIs**:
+  - Yamaha MusicCast API for receiver control
+  - Denon HEOS API for audio system management
+  - Support for RS232/IP-controlled amplifiers
 - **Other vendor APIs**: Implemented as plugins, not core dependencies
 
 > **Note**: The proprietary vendor APIs are provided for development convenience and demonstration purposes only. The long-term vision for Home-IO is to prioritize open standards (Z-Wave, Zigbee) for production deployments to ensure independence from third-party cloud services.
@@ -50,6 +54,8 @@ The Home-IO system consists of:
 3. **IoT Integration**:
    - Z-Wave and Zigbee support via USB dongles
    - Direct API integration with popular smart device brands
+   - Multi-zone audio control system with support for various receivers and amplifiers
+   - Streaming service integration for audio content
    - MQTT support for DIY sensors and devices
    - Extensible plugin architecture for adding new device types
 
@@ -67,6 +73,7 @@ home-io/
 ├── plugins/              # Plugin modules
 │   ├── zwave/            # Z-Wave integration (core)
 │   ├── zigbee/           # Zigbee integration (core)
+│   ├── audio/            # Audio system integration
 │   ├── tuya/             # Tuya API integration (development)
 │   ├── honeywell/        # Honeywell API integration (development)
 ├── utils/                # Utility functions
@@ -205,6 +212,12 @@ The system includes specialized controls for different device types:
 - **Thermostats**: Intuitive temperature management with mode-specific controls
 - **Smart Plugs**: Simple on/off toggles with power monitoring 
 - **Zigbee Devices**: Comprehensive management interface with clearly labeled sections
+- **Audio System**: Complete audio integration with:
+  - Multi-zone audio control interface
+  - Skeuomorphic stereo controls with functional VU meters
+  - Unified control for various audio devices (receivers, amplifiers, speakers)
+  - Theme-adaptive controls for all audio components
+  - Support for streaming services and local audio sources
 
 All controls adapt to the current theme while maintaining consistent functionality.
 

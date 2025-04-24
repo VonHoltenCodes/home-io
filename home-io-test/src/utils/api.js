@@ -213,3 +213,88 @@ export const identifyZigbeeDevice = (deviceId) => {
     method: 'POST',
   });
 };
+
+/**
+ * Get all audio devices
+ */
+export const getAudioDevices = () => fetchApi('audio');
+
+/**
+ * Get all audio zones
+ */
+export const getAudioZones = () => fetchApi('audio/zones');
+
+/**
+ * Get all audio sources
+ */
+export const getAudioSources = () => fetchApi('audio/sources');
+
+/**
+ * Get all streaming services
+ */
+export const getStreamingServices = () => fetchApi('audio/streaming');
+
+/**
+ * Get a specific audio device
+ * 
+ * @param {string} deviceId - Device ID
+ */
+export const getAudioDevice = (deviceId) => fetchApi(`audio/devices/${deviceId}`);
+
+/**
+ * Get a specific audio zone
+ * 
+ * @param {string} zoneId - Zone ID
+ */
+export const getAudioZone = (zoneId) => fetchApi(`audio/zones/${zoneId}`);
+
+/**
+ * Send command to audio device
+ * 
+ * @param {string} deviceId - Device ID
+ * @param {string} command - Command name
+ * @param {Object} params - Command parameters
+ */
+export const sendAudioDeviceCommand = (deviceId, command, params = {}) => {
+  return fetchApi(`audio/devices/${deviceId}/command`, {
+    method: 'POST',
+    body: JSON.stringify({
+      command,
+      params,
+    }),
+  });
+};
+
+/**
+ * Send command to audio zone
+ * 
+ * @param {string} zoneId - Zone ID
+ * @param {string} command - Command name
+ * @param {Object} params - Command parameters
+ */
+export const sendAudioZoneCommand = (zoneId, command, params = {}) => {
+  return fetchApi(`audio/zones/${zoneId}/command`, {
+    method: 'POST',
+    body: JSON.stringify({
+      command,
+      params,
+    }),
+  });
+};
+
+/**
+ * Control streaming service
+ * 
+ * @param {string} serviceId - Service ID
+ * @param {string} command - Command name
+ * @param {Object} params - Command parameters
+ */
+export const controlStreamingService = (serviceId, command, params = {}) => {
+  return fetchApi(`audio/streaming/${serviceId}/command`, {
+    method: 'POST',
+    body: JSON.stringify({
+      command,
+      params,
+    }),
+  });
+};

@@ -1,8 +1,9 @@
 {
   "system": {
     "name": "Home-IO",
-    "version": "0.1.0",
-    "log_level": "INFO"
+    "version": "0.2.0",
+    "description": "Modular home automation platform",
+    "debug": true
   },
   "server": {
     "host": "0.0.0.0",
@@ -12,60 +13,97 @@
   },
   "database": {
     "path": "data/home_io.db",
-    "backup_path": "data/backups",
-    "auto_backup": true,
-    "backup_interval_hours": 24
+    "backup_enabled": true,
+    "backup_interval": 86400,
+    "backup_count": 7
+  },
+  "logging": {
+    "level": "INFO",
+    "file": "data/logs/home_io.log",
+    "max_size_mb": 10,
+    "backup_count": 5
+  },
+  "ui": {
+    "dashboard_refresh_interval": 30,
+    "default_theme": "default",
+    "themes": ["default", "night", "retro"],
+    "device_widgets": {
+      "thermostat": true,
+      "light": true,
+      "switch": true,
+      "sensor": true,
+      "camera": true,
+      "audio": true
+    }
   },
   "plugins": {
-    "enabled": ["zwave", "zigbee", "tuya", "honeywell"],
-    "discovery": true,
     "path": "plugins",
+    "enabled": ["zigbee", "zwave", "tuya", "honeywell", "audio"],
     "config": {
-      "zwave": {
-        "controller_path": "/dev/ttyUSB0",
-        "mock_network": true
-      },
       "zigbee": {
-        "controller_path": "/dev/ttyUSB1",
-        "library_mode": "zigbee2mqtt",
+        "controller_path": "/dev/ttyUSB0",
         "mqtt_broker": "localhost",
         "mqtt_port": 1883,
         "mqtt_topic_prefix": "zigbee2mqtt",
+        "library_mode": "zigbee2mqtt",
+        "mock_network": true
+      },
+      "zwave": {
+        "controller_path": "/dev/ttyACM0",
         "mock_network": true
       },
       "tuya": {
-        "api_key": "",
-        "api_secret": "",
-        "data_center": "us",
+        "region": "us",
+        "access_id": "",
+        "access_key": "",
         "mock_mode": true,
-        "debug_mode": true
+        "devices": ["switch", "light", "thermostat"]
       },
       "honeywell": {
         "client_id": "",
         "client_secret": "",
-        "redirect_uri": "http://localhost:8000/api/callback/honeywell",
+        "redirect_url": "http://localhost:8000/api/callback/honeywell",
         "mock_mode": true,
-        "debug_mode": true
+        "devices": ["thermostat"]
+      },
+      "audio": {
+        "mock_mode": true,
+        "enable_yamaha": false,
+        "enable_denon": false,
+        "enable_rs232": false,
+        "enable_sonos": false,
+        "enable_bluesound": false,
+        "enable_spotify": false,
+        "spotify_client_id": "",
+        "spotify_client_secret": "",
+        "enable_airplay": false,
+        "enable_dlna": false
       }
     }
   },
-  "ui": {
-    "theme": "dark",
-    "title": "Home-IO Hub",
-    "refresh_interval": 5,
-    "tiles_per_row": 4,
-    "default_view": "dashboard"
-  },
   "security": {
-    "enable_auth": false,
-    "pin_required": false,
-    "pin": "1234",
-    "session_timeout_minutes": 30,
-    "allowed_ips": ["127.0.0.1", "192.168.0.0/24"]
+    "jwt_secret": "change_me_in_production",
+    "jwt_expiration": 86400,
+    "enable_auth": false
   },
-  "notifications": {
-    "enabled": true,
-    "retention_days": 7,
-    "max_count": 100
+  "integrations": {
+    "weather": {
+      "provider": "openweathermap",
+      "api_key": "",
+      "location": "auto",
+      "units": "imperial"
+    },
+    "notifications": {
+      "enabled": false,
+      "providers": ["email"],
+      "email": {
+        "smtp_server": "",
+        "smtp_port": 587,
+        "smtp_user": "",
+        "smtp_password": "",
+        "from_address": "",
+        "to_addresses": []
+      }
+    }
   }
 }

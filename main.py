@@ -18,6 +18,7 @@ from api.routes.devices import router as devices_router
 from api.routes.thermostats import router as thermostats_router
 from api.routes.smart_plugs import router as smart_plugs_router
 from api.routes.zigbee import router as zigbee_router
+from api.routes.audio import router as audio_router
 
 # Setup logging
 logging.basicConfig(
@@ -58,6 +59,7 @@ app.include_router(devices_router, prefix="/api/devices", tags=["devices"])
 app.include_router(thermostats_router, prefix="/api/thermostats", tags=["thermostats"])
 app.include_router(smart_plugs_router, prefix="/api/smart_plugs", tags=["smart_plugs"])
 app.include_router(zigbee_router, prefix="/api/zigbee", tags=["zigbee"])
+app.include_router(audio_router, prefix="/api/audio", tags=["audio"])
 
 # Health check endpoint
 @app.get("/api/health")

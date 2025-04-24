@@ -1,0 +1,90 @@
+.vu-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.retro-vu-meter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 10px;
+  background: var(--bg-secondary, #333);
+  border: 2px solid var(--border-color, #444);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
+  border-radius: 0;
+}
+
+.vu-meter canvas,
+.retro-vu-meter canvas {
+  width: 100%;
+  max-width: 200px;
+  height: 40px;
+  border-radius: 0;
+  margin-bottom: 5px;
+}
+
+.level-indicator {
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--text-primary, #ddd);
+  background-color: #111;
+  padding: 2px 8px;
+  border-radius: 0;
+  width: 60px;
+  text-align: center;
+  margin-top: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .vu-meter, .retro-vu-meter {
+    max-width: 100%;
+  }
+  
+  .vu-meter canvas, .retro-vu-meter canvas {
+    max-width: 100%;
+  }
+}
+
+/* Theme-specific styles using body classes */
+.theme-night .level-indicator {
+  color: var(--text-primary, #0f0);
+  background-color: #000;
+  border: 1px solid var(--border-color, #0f0);
+  box-shadow: 0 0 5px rgba(0, 255, 0, 0.3);
+}
+
+.theme-night .retro-vu-meter {
+  background: var(--bg-secondary, #111);
+  border-color: var(--border-color, #0f0);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 255, 0, 0.1);
+}
+
+.theme-retro .retro-vu-meter {
+  clip-path: polygon(
+    0% 0%,
+    100% 0%, 
+    100% 80%,
+    95% 100%,
+    0% 100%
+  );
+  background-color: #222;
+  border-left: 3px solid var(--border-color, #ff4500);
+}
+
+.theme-retro .level-indicator {
+  font-family: 'VT323', monospace;
+  color: var(--text-primary, #ff4500);
+  background-color: #111;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.8), 0 0 5px var(--text-primary, #ff4500);
+  letter-spacing: 1px;
+}
