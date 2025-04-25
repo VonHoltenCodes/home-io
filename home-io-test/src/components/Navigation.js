@@ -38,6 +38,13 @@ const Navigation = ({ activePage, onChangePage }) => {
       >
         Smart Plugs
       </button>
+      
+      <button 
+        className={`nav-item ${activePage === 'themes' ? 'active' : ''}`}
+        onClick={() => onChangePage('themes')}
+      >
+        Themes
+      </button>
     </nav>
   );
 };

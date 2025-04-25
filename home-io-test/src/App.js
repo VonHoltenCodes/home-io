@@ -3,6 +3,7 @@ import { getSystemInfo } from './utils/api';
 import Dashboard from './components/Dashboard';
 import ZigbeePage from './components/ZigbeePage';
 import AudioPage from './components/Audio/AudioPage';
+import ThemeDemo from './components/ThemeDemo';
 import Navigation from './components/Navigation';
 import { ThemeProvider, useTheme } from './utils/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
@@ -40,6 +41,8 @@ function AppContent() {
         return <ZigbeePage />;
       case 'audio':
         return <AudioPage />;
+      case 'themes':
+        return <ThemeDemo />;
       case 'dashboard':
       default:
         return <Dashboard />;
