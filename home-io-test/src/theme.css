@@ -7,6 +7,8 @@
   --text-secondary: #aaa;
   --accent-color: #42a5f5;
   --tile-hover-shadow: rgba(0, 0, 0, 0.2);
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23666666' fill-opacity='0.05'/%3E%3C/svg%3E");
+  --scan-line: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02) 50%, transparent);
 }
 
 /* Night Ops Theme - Green night vision inspired */
@@ -18,7 +20,7 @@
   --text-secondary: #00cc00;
   --accent-color: #00ff00;
   --tile-hover-shadow: rgba(0, 255, 0, 0.3);
-  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%2300ff00' fill-opacity='0.1'/%3E%3C/svg%3E");
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%2300ff00' fill-opacity='0.15'/%3E%3C/svg%3E");
   --scan-line: linear-gradient(to bottom, transparent, rgba(0, 255, 0, 0.05) 50%, transparent);
   --glow-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
 }
@@ -48,6 +50,8 @@ body {
   color: var(--text-primary);
   font-family: 'Arial', sans-serif;
   transition: all 0.3s ease;
+  background-image: var(--grid-overlay);
+  position: relative;
 }
 
 .theme-retro body {
@@ -68,6 +72,7 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 /* Create scanline effect */
+body::before,
 .theme-retro body::before,
 .theme-night body::before {
   content: '';
