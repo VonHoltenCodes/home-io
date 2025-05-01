@@ -9,6 +9,11 @@ class DeviceType(str, Enum):
     LIGHT = "light"
     THERMOSTAT = "thermostat"
     SENSOR = "sensor"
+    ENVIRONMENTAL_SENSOR = "environmental_sensor"
+    TEMPERATURE_SENSOR = "temperature_sensor"
+    HUMIDITY_SENSOR = "humidity_sensor"
+    PRESSURE_SENSOR = "pressure_sensor"
+    AIR_QUALITY_SENSOR = "air_quality_sensor"
     LOCK = "lock"
     CAMERA = "camera"
     SWITCH = "switch"
@@ -27,6 +32,9 @@ class DeviceProtocol(str, Enum):
     WIFI = "wifi"
     BLUETOOTH = "bluetooth"
     API = "api"
+    MQTT = "mqtt"
+    USB = "usb"
+    TEENSY = "teensy"
     OTHER = "other"
 
 
@@ -105,3 +113,46 @@ class DeviceRegistration(BaseModel):
     manufacturer: Optional[str] = None
     model: Optional[str] = None
     config: Dict[str, Any] = {}
+
+
+class TeensyDeviceConfig(BaseModel):
+    """Configuration for Teensy devices"""
+    port: str
+    baud_rate: int = 115200  # Teensy typically uses higher baud rates
+    timeout: float = 1.0
+    mqtt_topic: Optional[str] = None
+    mqtt_broker: Optional[str] = None
+    mqtt_port: int = 1883
+    mqtt_username: Optional[str] = None
+    mqtt_password: Optional[str] = None
+    reading_interval: int = 60  # seconds between readings
+    interface_type: str = "serial"  # serial, midi, hid, etc.
+    firmware_version: Optional[str] = None
+    board_type: str = "teensy_4.0"  # teensy_4.0, teensy_4.1, etc.
+
+
+class TeensyDeviceRegistration(DeviceRegistration):
+    """Model for registering a Teensy device"""
+    protocol: DeviceProtocol = DeviceProtocol.TEENSY
+    teensy_config: TeensyDeviceConfig
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "name": "Workshop Environmental Sensor",
+                "type": "environmental_sensor",
+                "protocol": "teensy",
+                "location": "Workshop",
+                "manufacturer": "PJRC",
+                "model": "Teensy 4.0",
+                "teensy_config": {
+                    "port": "/dev/ttyACM0",
+                    "baud_rate": 115200,
+                    "timeout": 1.0,
+                    "mqtt_topic": "home_io/sensors/workshop",
+                    "reading_interval": 60,
+                    "interface_type": "serial",
+                    "board_type": "teensy_4.0"
+                }
+            }
+        }

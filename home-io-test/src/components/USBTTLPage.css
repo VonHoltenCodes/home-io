@@ -1,0 +1,335 @@
+.usb-ttl-page {
+  padding: 20px;
+  width: 100%;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-device-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.theme-default .add-device-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+}
+
+.theme-retro .add-device-button {
+  background-color: #ff8800;
+  color: black;
+  border: 2px solid #ff5500;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+.theme-night .add-device-button {
+  background-color: #003300;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+
+.error-message {
+  background-color: rgba(255, 0, 0, 0.1);
+  border-left: 4px solid red;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+/* New Device Form */
+.new-device-form-container {
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+
+.theme-retro .new-device-form-container {
+  background-color: #000000;
+  border: 2px solid #ff8800;
+}
+
+.theme-night .new-device-form-container {
+  background-color: #001100;
+  border: 1px solid #006600;
+}
+
+.new-device-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.theme-default .form-group input,
+.theme-default .form-group select {
+  border: 1px solid #ccc;
+}
+
+.theme-retro .form-group input,
+.theme-retro .form-group select {
+  background-color: #222;
+  border: 1px solid #ff8800;
+  color: #ff8800;
+  font-family: 'Courier New', monospace;
+}
+
+.theme-night .form-group input,
+.theme-night .form-group select {
+  background-color: #001100;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+}
+
+.form-actions {
+  grid-column: span 2;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.submit-button,
+.cancel-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.theme-default .submit-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+}
+
+.theme-default .cancel-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.theme-retro .submit-button,
+.theme-retro .cancel-button {
+  background-color: #000;
+  border: 2px solid #ff8800;
+  color: #ff8800;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+.theme-night .submit-button,
+.theme-night .cancel-button {
+  background-color: #001100;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+}
+
+.refresh-button {
+  padding: 4px 8px;
+  margin-top: 5px;
+  cursor: pointer;
+}
+
+/* Device Cards */
+.devices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.device-card {
+  border-radius: 8px;
+  padding: 20px;
+  transition: transform 0.2s;
+}
+
+.device-card:hover {
+  transform: translateY(-5px);
+}
+
+.theme-default .device-card {
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.theme-retro .device-card {
+  background-color: #000;
+  border: 2px solid #ff8800;
+  box-shadow: 0 0 10px rgba(255, 136, 0, 0.5);
+}
+
+.theme-night .device-card {
+  background-color: #001100;
+  border: 1px solid #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+.device-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.status-indicator {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.theme-default .status-indicator.online {
+  background-color: #28a745;
+  color: white;
+}
+
+.theme-default .status-indicator.offline {
+  background-color: #dc3545;
+  color: white;
+}
+
+.theme-retro .status-indicator.online {
+  background-color: #008800;
+  color: #000;
+  border: 1px solid #00ff00;
+}
+
+.theme-retro .status-indicator.offline {
+  background-color: #880000;
+  color: #000;
+  border: 1px solid #ff0000;
+}
+
+.theme-night .status-indicator.online {
+  background-color: #004400;
+  color: #00ff00;
+  border: 1px solid #00ff00;
+}
+
+.theme-night .status-indicator.offline {
+  background-color: #440000;
+  color: #ff0000;
+  border: 1px solid #ff0000;
+}
+
+.device-info {
+  margin-bottom: 15px;
+}
+
+.device-info p {
+  margin: 5px 0;
+}
+
+.device-readings {
+  margin-bottom: 15px;
+}
+
+.reading {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.theme-retro .reading {
+  border-bottom: 1px solid #ff8800;
+}
+
+.theme-night .reading {
+  border-bottom: 1px solid #006600;
+}
+
+.reading-name {
+  font-weight: bold;
+}
+
+.device-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.edit-button,
+.remove-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.theme-default .edit-button {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+}
+
+.theme-default .remove-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.theme-retro .edit-button,
+.theme-retro .remove-button {
+  background-color: #000;
+  border: 1px solid #ff8800;
+  color: #ff8800;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+.theme-night .edit-button,
+.theme-night .remove-button {
+  background-color: #001100;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+}
+
+.no-devices {
+  text-align: center;
+  padding: 40px;
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.theme-retro .no-devices {
+  background-color: #000;
+  border: 2px solid #ff8800;
+  color: #ff8800;
+}
+
+.theme-night .no-devices {
+  background-color: #001100;
+  border: 1px solid #00ff00;
+  color: #00ff00;
+}
+
+.loading {
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}

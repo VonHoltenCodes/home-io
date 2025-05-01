@@ -41,3 +41,4 @@ home-io-test/yarn-error.log*
 .vscode/
 *.swp
 *.swo
+**/.claude/settings.local.json

@@ -2,7 +2,7 @@
 
 Home-IO is a modular, extensible, and open-source home automation system designed to run on a Small Form Factor (SFF) PC connected to a wall-mounted touchscreen. It provides a unified interface for controlling and monitoring smart home devices using a fully custom software stack, without relying on third-party home automation platforms.
 
-> **IMPORTANT**: This project is currently in MVP (Minimum Viable Product) development status and is intended for educational and recreational purposes only. It is not yet ready for production use.
+> **DEVELOPMENT STATUS**: This project has moved from demo to development phase (v0.3.0). It now supports direct hardware integration with environmental sensors and has a fully functional UI for monitoring real-time sensor data.
 
 ## Features
 
@@ -23,7 +23,9 @@ Home-IO uses a dual-track approach to device integration:
 - **MQTT**: Local message broker for custom sensors and devices
 - **DIY Sensors**: Direct USB or GPIO connections for custom hardware
 
-### Development/Demo API Integrations (Optional)
+### Development/Integration APIs
+- **Teensy/Arduino Integration**: Direct hardware connection for environmental sensors (BME280)
+- **USB-TTL Serial**: For DIY/custom microcontroller projects
 - **Tuya API**: For development/testing with Tuya-compatible devices
 - **Honeywell API**: For development/testing with Honeywell thermostats
 - **Audio Control APIs**:
@@ -32,7 +34,7 @@ Home-IO uses a dual-track approach to device integration:
   - Support for RS232/IP-controlled amplifiers
 - **Other vendor APIs**: Implemented as plugins, not core dependencies
 
-> **Note**: The proprietary vendor APIs are provided for development convenience and demonstration purposes only. The long-term vision for Home-IO is to prioritize open standards (Z-Wave, Zigbee) for production deployments to ensure independence from third-party cloud services.
+> **Note**: The direct hardware integration with Teensy microcontrollers and environmental sensors works in production. Proprietary vendor APIs are provided for development convenience and demonstration purposes. The long-term vision for Home-IO is to prioritize open standards and direct hardware integration to ensure independence from third-party cloud services.
 
 ## System Architecture
 

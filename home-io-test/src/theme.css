@@ -7,12 +7,12 @@
   --text-secondary: #aaa;
   --accent-color: #42a5f5;
   --tile-hover-shadow: rgba(0, 0, 0, 0.2);
-  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23666666' fill-opacity='0.05'/%3E%3C/svg%3E");
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23666666' fill-opacity='0.15'/%3E%3C/svg%3E");
   --scan-line: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.02) 50%, transparent);
 }
 
 /* Night Ops Theme - Green night vision inspired */
-.theme-night {
+body.theme-night {
   --bg-primary: #000000;
   --bg-secondary: #0a0a0a;
   --border-color: #00ff00;
@@ -26,7 +26,7 @@
 }
 
 /* Retro Theme - Inspired by vonholtencodes.com */
-.theme-retro {
+body.theme-retro {
   --bg-primary: #111111;
   --bg-secondary: #181818;
   --border-color: #ff4500;
@@ -36,7 +36,7 @@
   --tile-hover-shadow: rgba(255, 69, 0, 0.3);
   
   /* Add additional retro theme variables */
-  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23ff4500' fill-opacity='0.1'/%3E%3C/svg%3E");
+  --grid-overlay: url("data:image/svg+xml,%3Csvg width='20' height='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h20v20H0V0zm19 19V1H1v18h18z' fill='%23ff4500' fill-opacity='0.15'/%3E%3C/svg%3E");
   --scan-line: linear-gradient(to bottom, transparent, rgba(255, 69, 0, 0.05) 50%, transparent);
   --glow-shadow: 0 0 8px rgba(255, 69, 0, 0.4);
   --retro-overlay: repeating-linear-gradient(rgba(255, 69, 0, 0.03) 0px, rgba(255, 69, 0, 0.03) 1px, transparent 1px, transparent 2px);
@@ -50,21 +50,49 @@ body {
   color: var(--text-primary);
   font-family: 'Arial', sans-serif;
   transition: all 0.3s ease;
-  background-image: var(--grid-overlay);
   position: relative;
 }
 
-.theme-retro body {
+/* Apply grid backgrounds to App-content instead of body */
+.App-content {
+  position: relative;
+}
+
+.App-content:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  background-image: linear-gradient(rgba(100, 100, 100, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(100, 100, 100, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.theme-night .App-content:before {
+  background-image: linear-gradient(rgba(0, 255, 0, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 255, 0, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.theme-retro .App-content:before {
+  background-image: linear-gradient(rgba(255, 69, 0, 0.15) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255, 69, 0, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+body.theme-retro {
   font-family: var(--font-family-retro);
   letter-spacing: 1px;
-  background-image: var(--grid-overlay), var(--retro-overlay);
   position: relative;
 }
 
-.theme-night body {
+body.theme-night {
   font-family: 'Courier New', monospace;
   letter-spacing: 1px;
-  background-image: var(--grid-overlay);
   position: relative;
 }
 
@@ -72,9 +100,9 @@ body {
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
 
 /* Create scanline effect */
-body::before,
-.theme-retro body::before,
-.theme-night body::before {
+body::after,
+body.theme-retro::after,
+body.theme-night::after {
   content: '';
   position: fixed;
   top: 0;
@@ -102,11 +130,11 @@ body::before,
 }
 
 /* Night vision mode effect */
-.theme-night body {
+body.theme-night .App {
   position: relative;
 }
 
-.theme-night body::after {
+body.theme-night .App::before {
   content: '';
   position: fixed;
   top: 0;

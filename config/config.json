@@ -1,8 +1,8 @@
 {
   "system": {
     "name": "Home-IO",
-    "version": "0.2.0",
-    "description": "Modular home automation platform",
+    "version": "0.3.0",
+    "description": "Modular home automation platform with hardware integration",
     "debug": true
   },
   "server": {
@@ -38,7 +38,7 @@
   },
   "plugins": {
     "path": "plugins",
-    "enabled": ["zigbee", "zwave", "tuya", "honeywell", "audio"],
+    "enabled": ["zigbee", "zwave", "tuya", "honeywell", "audio", "teensy"],
     "config": {
       "zigbee": {
         "controller_path": "/dev/ttyUSB0",
@@ -78,6 +78,20 @@
         "spotify_client_secret": "",
         "enable_airplay": false,
         "enable_dlna": false
+      },
+      "teensy": {
+        "mock_mode": false,
+        "mqtt_broker": "localhost",
+        "mqtt_port": 1883,
+        "mqtt_topic_prefix": "home_io/sensors",
+        "mqtt_username": "",
+        "mqtt_password": "",
+        "default_baud_rate": 115200,
+        "default_reading_interval": 60,
+        "usb_timeout": 1.0,
+        "board_types": ["teensy_4.0", "teensy_4.1"],
+        "default_port": "/dev/ttyACM0",
+        "debug_serial": true
       }
     }
   },

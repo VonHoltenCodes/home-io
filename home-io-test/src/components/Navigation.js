@@ -19,6 +19,13 @@ const Navigation = ({ activePage, onChangePage }) => {
       </button>
       
       <button 
+        className={`nav-item ${activePage === 'teensy' ? 'active' : ''}`}
+        onClick={() => onChangePage('teensy')}
+      >
+        Teensy Sensors
+      </button>
+      
+      <button 
         className={`nav-item ${activePage === 'audio' ? 'active' : ''}`}
         onClick={() => onChangePage('audio')}
       >

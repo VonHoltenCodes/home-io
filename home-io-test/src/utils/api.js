@@ -1,5 +1,6 @@
 /**
  * API utility functions for Home-IO frontend
+ * Updated to include Teensy device support
  */
 
 // Base API URL for backend
